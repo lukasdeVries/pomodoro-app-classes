@@ -47,7 +47,7 @@ window.addEventListener( 'DOMContentLoaded', () => {
 
     timer.buttonContent1.addEventListener('click', () => {
         if (!clicked) return
-        timer.restart(timer.remainingSecondsStart)
+        timer.restart()
     })
 
     timer.buttonContent2.addEventListener('click', () => {

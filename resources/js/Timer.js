@@ -3,7 +3,7 @@ import Alert from './Alert.js'
 
 export default class Timer extends Functions{
     /**
-     * sets number of minutes used in timer and sets duration of break
+     * sets all fields needed for timer
      * 
      */
     constructor() { 
@@ -49,8 +49,11 @@ export default class Timer extends Functions{
         if(timerType === 'work'){
             this.updateTitleTime()
         }
+        // colects the given seconds and devides them in minutes 
         const minutes = Math.floor(remainingSeconds / 60)
+        // devides the given seconds by sixty and gives the remainder
         const seconds = remainingSeconds % 60
+        // fils the minutes and seconds elements with strings that are at least 2 digits 
         minutesElement.innerHTML = minutes.toString().padStart(2, '0')
         secondsElement.innerHTML = seconds.toString().padStart(2, '0')
     }
@@ -63,7 +66,9 @@ export default class Timer extends Functions{
         if( this.interval === null && this.breakInterval === null ){
             this.buttonContent0.innerHTML = 'Start'
         }else if ( this.breakCount > 0 && this.interval === null){
+            // clears the element content 
             this.buttonContent0.innerHTML = ''
+            // fils the element with other timer elements 
             this.breakMinutesEl = functions.createHTMLElement('p', 'break-minutes', this.buttonContent0)
             this.breakDevider = functions.createHTMLElement('p', 'break-devider', this.buttonContent0, ' : ')
             this.breakSecondsEl = functions.createHTMLElement('p', 'break-seconds', this.buttonContent0)    
@@ -94,7 +99,10 @@ export default class Timer extends Functions{
         }, 1000)
 
     }
-
+    /**
+     * starts the timer
+     * @returns 
+     */
     start() {
         let alert = new Alert()
         if (this.remainingSeconds === 0 && this.interval !== null) return
@@ -104,10 +112,13 @@ export default class Timer extends Functions{
             this.updateTimer(this.timerMinutes, this.timerSeconds, this.remainingSeconds, 'work')
 
             if (this.remainingSeconds === 0) {
+                // adds a number to the number of breaks 
                 this.breakCount++
                 this.updateBreakCount(this.breakCount)
                 if (this.breakCount < 4) {
+                    // resets the length of the timer  
                     this.remainingSeconds = this.remainingSecondsStart
+                    // resets the length of the break
                     this.breakTime = this.breakTimeStart
                     this.startBreak()
                     this.updateStartStop()
@@ -115,6 +126,7 @@ export default class Timer extends Functions{
                 }
                 else{
                     this.remainingSeconds =this.remainingSecondsStart
+                    // doubles the break time on the fith break 
                     this.breakTime = this.breakTimeStart * 2
                     this.startBreak()
                     this.updateStartStop()
@@ -127,29 +139,50 @@ export default class Timer extends Functions{
         this.updateStartStop()
     }
 
+    /**
+     * stops the interval with witch the timer counts
+     * param determines wether timer or break stops 
+     * @param {string} interval 
+     * @returns 
+     */
     stop(interval) {
         if(interval === null) return;
         if(interval === 'break'){
             clearInterval(this.breakInterval)
+            // sets the break interval to null 
             this.breakInterval = null
         }else{
             clearInterval(this.interval)
+            // sets the timer interval to null 
             this.interval = null
         }
         this.updateStartStop()
     }
 
-    restart(startingSeconds) {
+    /**
+     * restarts the timer and sets it to the original given value
+     * @returns 
+     */
+    restart() {
         if(this.breakInterval !== null) return
-        this.remainingSeconds = startingSeconds
+        this.remainingSeconds = this.remainingSecondsStart
         this.updateTimer(this.timerMinutes, this.timerSeconds, this.remainingSeconds, 'work')
         this.updateStartStop()
     }
     
+    /**
+     * updates the breakvalue 
+     * @param {number} breakNumber 
+     */
     updateBreakCount(breakNumber){
         this.breakCounterValue.innerHTML = breakNumber
     }
 
+    /**
+     * adds given number of minutes to the timer
+     * @param {number} minutes 
+     * @returns 
+     */
     addMinutes(minutes) {
         if(this.breakInterval !== null) return
         const seconds = minutes * 60
@@ -157,6 +190,9 @@ export default class Timer extends Functions{
         this.updateTimer(this.timerMinutes, this.timerSeconds, this.remainingSeconds)
     }
 
+    /**
+     * updates the timer in the title of the tab 
+     */
     updateTitleTime() {
         this.titleTimer.item(0).innerHTML = ''
         const minutes = Math.floor(this.remainingSeconds / 60);
