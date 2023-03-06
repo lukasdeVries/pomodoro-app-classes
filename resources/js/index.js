@@ -5,7 +5,7 @@ const timer = new Timer()
 const alert = new Alert()
 
 let clicked
-
+ 
 timer.createTimerHTML()
 
 

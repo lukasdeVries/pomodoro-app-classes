@@ -6,10 +6,8 @@ export default class Timer extends Functions{
      * sets number of minutes used in timer and sets duration of break
      * 
      */
-    constructor() {
+    constructor() { 
         super()
-
-        let functions = new Functions()
 
         this.interval = null
 
@@ -85,8 +83,7 @@ export default class Timer extends Functions{
             this.breakTime--
             this.updateTimer(this.breakMinutesEl, this.breakSecondsEl, this.breakTime)
             // this.updateStartStop()
-            if(this.breaktime === 0){
-                console.log('break')
+            if(this.breakTime === 0){
                 this.stop('break')
                 if(this.breakCount >= 4){
                     this.updateStartStop()
@@ -136,12 +133,9 @@ export default class Timer extends Functions{
         if(interval === 'break'){
             clearInterval(this.breakInterval)
             this.breakInterval = null
-            console.log('2')
-
         }else{
             clearInterval(this.interval)
             this.interval = null
-
         }
         this.updateStartStop()
     }
