@@ -50,6 +50,13 @@ body{
         }
     
     }
+    &__alert--invisible{
+        opacity: 0;
+    }
+    &__alert--visible{
+        opacity: 1;
+    }
+
 }
 .alert{
     &__header{

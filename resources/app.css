@@ -1,7 +1,7 @@
 :root {
   --background-color-main: #9E1B32;
   --background-color-secondary: rgba(255, 255, 255, .6);
-  --background-color-timer-button: black;
+  --background-color-timer-button: #000000;
   --background-color-hover: rgb(47, 46, 46);
   --font: "Roboto";
 }
@@ -52,6 +52,12 @@ body {
   .pomodoro-app__alert {
     top: 2rem;
   }
+}
+.pomodoro-app__alert--invisible {
+  opacity: 0;
+}
+.pomodoro-app__alert--visible {
+  opacity: 1;
 }
 
 .alert__header {

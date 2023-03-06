@@ -2,7 +2,6 @@ import Timer from './Timer.js'
 import Alert from './Alert.js'
 
 const timer = new Timer()
-const alert = new Alert()
 
 let clicked
  
@@ -15,8 +14,8 @@ window.addEventListener( 'DOMContentLoaded', () => {
     timer.remainingSeconds = timer.remainingSecondsStart;
     
     if(userInput === '' || timer.remainingSecondsStart > 3600 || timer.remainingSecondsStart < 3){
-        alertHeader.innerHTML = 'Wrong value!'
-        alertContent.innerHTML = 'Reload page and give other value'
+        timer.alertHeader.innerHTML = 'Wrong value!'
+        timer.alertContent.innerHTML = 'Reload page and give other value'
         return;
     };
     
@@ -27,12 +26,10 @@ window.addEventListener( 'DOMContentLoaded', () => {
     timer.breakTime = timer.breakTimeStart;
     
     if(userBreakInput === '' || timer.breakTimeStart > 3600 || timer.breakTimeStart < 3){
-        alertHeader.innerHTML = 'Wrong value!'
-        alertContent.innerHTML = 'Reload page and give other value'
+        timer.alertHeader.innerHTML = 'Wrong value!'
+        timer.alertContent.innerHTML = 'Reload page and give other value'
         return;
     };
-
-    alert.timerAlert.style.opacity = 0
 
     timer.updateTimer(timer.timerMinutes, timer.timerSeconds, timer.remainingSeconds, 'work')
     timer.updateStartStop()

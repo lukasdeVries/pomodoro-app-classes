@@ -111,14 +111,14 @@ export default class Timer extends Functions{
                     this.breakTime = this.breakTimeStart
                     this.startBreak()
                     this.updateStartStop()
-                    alert.showAlert(this.breakTime)
+                    alert.showAlert(this.breakTime, this.timerAlert, this.alertContent)
                 }
                 else{
                     this.remainingSeconds =this.remainingSecondsStart
                     this.breakTime = this.breakTimeStart * 2
                     this.startBreak()
                     this.updateStartStop()
-                    alert.showAlert(this.breakTime)
+                    alert.showAlert(this.breakTime, this.timerAlert, this.alertContent)
                 }
                 this.updateTimer(this.timerMinutes, this.timerSeconds, this.remainingSeconds)
                 this.stop('interval')
@@ -214,6 +214,13 @@ export default class Timer extends Functions{
         this.titleTimer = document.getElementsByTagName('title');
         this.breakMinutesEl = functions.createHTMLElement('p', 'break-minutes', this.buttonContent0)
         this.breakSecondsEl = functions.createHTMLElement('p', 'break-seconds', this.buttonContent0)
+
+        const pomodoroBodys = document.getElementsByTagName('body')
+        this.pomodoroBody = pomodoroBodys.item(0)
+        this.timerAlert = functions.createHTMLElement('div', 'pomodoro-app__alert pomodoro-app__alert--invisible', this.pomodoroBody)
+        this.alertHeader = functions.createHTMLElement('p', 'alert__header', this.timerAlert, 'Time is Up!')
+        this.alertContent = functions.createHTMLElement('p', 'alert__content', this.timerAlert)
+
 
     }
 }
