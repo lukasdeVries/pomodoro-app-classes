@@ -187,7 +187,7 @@ export default class Timer extends Functions{
         if(this.breakInterval !== null) return
         const seconds = minutes * 60
         this.remainingSeconds = this.remainingSeconds + seconds
-        this.updateTimer(this.timerMinutes, this.timerSeconds, this.remainingSeconds)
+        this.updateTimer(this.timerMinutes, this.timerSeconds, this.remainingSeconds, 'work')
     }
 
     /**
