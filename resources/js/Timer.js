@@ -82,7 +82,6 @@ export default class Timer extends Functions{
         this.breakInterval = setInterval(() => {
             this.breakTime--
             this.updateTimer(this.breakMinutesEl, this.breakSecondsEl, this.breakTime)
-            // this.updateStartStop()
             if(this.breakTime === 0){
                 this.stop('break')
                 if(this.breakCount >= 4){
@@ -109,19 +108,19 @@ export default class Timer extends Functions{
                 this.updateBreakCount(this.breakCount)
                 if (this.breakCount < 4) {
                     this.remainingSeconds = this.remainingSecondsStart
-                    this.breaktime = this.breaktimeStart
+                    this.breakTime = this.breakTimeStart
                     this.startBreak()
                     this.updateStartStop()
                     alert.showAlert(this.breakTime)
                 }
                 else{
                     this.remainingSeconds =this.remainingSecondsStart
-                    this.breakTime = this.breaktimeStart * 2
+                    this.breakTime = this.breakTimeStart * 2
                     this.startBreak()
                     this.updateStartStop()
                     alert.showAlert(this.breakTime)
                 }
-                this.updateTimer(this.breakMinutesEl, this.breakSecondsEl, this.breaktime)
+                this.updateTimer(this.timerMinutes, this.timerSeconds, this.remainingSeconds)
                 this.stop('interval')
             }
         }, 1000)
@@ -155,7 +154,7 @@ export default class Timer extends Functions{
         if(this.breakInterval !== null) return
         const seconds = minutes * 60
         this.remainingSeconds = this.remainingSeconds + seconds
-        this.updateTimer()
+        this.updateTimer(this.timerMinutes, this.timerSeconds, this.remainingSeconds)
     }
 
     updateTitleTime() {

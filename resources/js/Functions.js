@@ -10,11 +10,6 @@ export default class Functions {
      * @returns
      */
 
-    constructor() {
-        
-    }
-
-    
     createHTMLElement(tag, className, parent, inner = '') {
         let element = document.createElement(tag)
         element.className = className
