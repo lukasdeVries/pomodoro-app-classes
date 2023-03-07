@@ -25,6 +25,10 @@ export default class Alert extends Functions{
                 alertElement.classList.add('pomodoro-app__alert--invisible')
             }
         }, 1000)
+        setTimeout( () => {
+            alertElement.classList.remove('pomodoro-app__alert--visible')
+            alertElement.classList.add('pomodoro-app__alert--invisible')
+        }, 7000 )
 
     }
 }

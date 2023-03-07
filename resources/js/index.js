@@ -19,7 +19,6 @@ window.addEventListener( 'DOMContentLoaded', () => {
         return;
     };
     
-    
     const userBreakInput = prompt('How long should your breaktime be? (after 4 brakes the break time will be doubled!)');
     
     timer.breakTimeStart = userBreakInput * 60;
@@ -33,8 +32,6 @@ window.addEventListener( 'DOMContentLoaded', () => {
 
     timer.updateTimer(timer.timerMinutes, timer.timerSeconds, timer.remainingSeconds, 'work')
     timer.updateStartStop()
-
-
 
     timer.buttonContent0.addEventListener('click', () => {
         if(timer.interval === null && timer.breakInterval === null){
@@ -57,6 +54,4 @@ window.addEventListener( 'DOMContentLoaded', () => {
     timer.buttonContent3.addEventListener('click', () => {
         timer.addMinutes(10)
     })
-
-
 })

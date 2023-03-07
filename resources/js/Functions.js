@@ -4,10 +4,10 @@ export default class Functions {
      * 
      * @param {string} tag 
      * @param {string} className 
-     * @param {*} parent 
+     * @param {HTMLElement} parent 
      * @param {string} inner 
      * 
-     * @returns
+     * @returns {HTMLElement}
      */
 
     createHTMLElement(tag, className, parent, inner = '') {

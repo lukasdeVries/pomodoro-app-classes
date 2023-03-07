@@ -166,6 +166,7 @@ export default class Timer extends Functions{
     restart() {
         if(this.breakInterval !== null) return
         this.remainingSeconds = this.remainingSecondsStart
+        this.stop()
         this.updateTimer(this.timerMinutes, this.timerSeconds, this.remainingSeconds, 'work')
         this.updateStartStop()
     }
